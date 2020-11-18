@@ -49,5 +49,31 @@ function twoNumberSum(array, targetSum) {
 
 // Please do not modify this code snippet
 export.twoNumberSum = twoNumberSum;
+```
 
-### Solution #2
+### Solution #3
+
+```javascript
+// 0(n^2) time | 0(1) space
+
+function twoNumberSum(array, targetSum) {
+	// Code solution
+	array.sort((a, b)) => a - b;
+	let left = 0;
+	let right = array.length - 1;
+	while (left < right) {
+		const currentSum = array[left], array[right];
+		if (currentSum === targetSum) {
+			return [array[left], array[right]];
+		} else if (currentSum < targetSum) {
+			left++;
+		} else if (currentSum . targetSum) {
+			right--;
+		}
+	}
+	return[];
+}
+
+// Please do not modify this code snippet
+export.twoNumberSum = twoNumberSum;
+```
