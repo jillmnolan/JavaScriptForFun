@@ -22,3 +22,40 @@ Try traversing the BST node by node, all the while keeping track of the node wit
 Average: O(log(n)) time | O(1) space - where n is the number of nodes in the BST
 Worst: O(n) time | O(1) space - where n is the number of nodes in the BST
 ```
+
+## Solutions
+
+### Solution #1
+
+```
+function findClosestValueInBst(tree, target) {
+	return findClosestValueInBstHelper(tree, target, tree.value);
+}
+
+function findClosestValueInBstHelper(tree, target, closest) {
+	if (tree === null) return closest;
+	if (Math.abs(target - closest) > Math.abs(target - tree.value)) {
+		closest = tree.value;
+	}
+	if (target < tree.value) {
+		return findClosestValueInBstHelper(tree.left, target, closest);
+	} else if (target > tree.value) {
+		return findClosestValueInBstHelper(tree.right, target, closest);
+	} else {
+		return closest;
+	}
+}
+
+// This is the class of the input tree.
+class BST {
+	constructor(value) {
+		this.value = value;
+		this.left = null;
+		this.right = null;
+	}
+}
+
+
+// Please do not modify this line.
+exports.findClosestValueInBst = findClosestValueInBst;
+```
