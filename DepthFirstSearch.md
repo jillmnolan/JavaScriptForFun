@@ -19,6 +19,28 @@ logic until the entire graph has been traversed. Do not forget to add the curren
 
 ### Solution #1
 ```
-O(v + e) time | O(v) space - where v is the number of vertices of the input graph and e is the number
-of edges of the input graph.
+// Please do not modify the Node class, with the only exception being the depthFirstSearch method.
+class Node {
+	constructor(name) {
+		this.name = name;
+		this.children = [];
+	}
+	addChild(name) {
+		this.children.push(new Node(name));
+		return this;
+	}
+	// O(v + e) time | O(v) space, where ```v``` is the number of vertices of the input graph,
+  // and ```e``` is the number of edges of the input graph.
+	depthFirstSearch(array) {
+		// Write your code here...
+		array.push(this.name);
+		for (const child of this.children) {
+			child.depthFirstSearch(array);
+		}
+		return array;
+	}
+}
+
+// Please do not modify this line
+exports.Node = Node;
 ```
